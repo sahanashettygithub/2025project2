@@ -8,9 +8,18 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { Gift, Award, BarChart3 } from "lucide-react";
 
+interface DonationItem {
+  id: string;
+  title: string;
+  category: string;
+  condition: string;
+  status: string;
+  created_at: string;
+}
+
 const DonorDashboard = () => {
   const { profile } = useAuth();
-  const [donations, setDonations] = useState<any[]>([]);
+  const [donations, setDonations] = useState<DonationItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

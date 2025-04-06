@@ -8,10 +8,19 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { ShoppingBag, Package, Calendar } from "lucide-react";
 
+interface DonationItem {
+  id: string;
+  title: string;
+  category: string;
+  condition: string;
+  status: string;
+  created_at: string;
+}
+
 const ReceiverDashboard = () => {
   const { profile } = useAuth();
-  const [receivedItems, setReceivedItems] = useState<any[]>([]);
-  const [availableItems, setAvailableItems] = useState<any[]>([]);
+  const [receivedItems, setReceivedItems] = useState<DonationItem[]>([]);
+  const [availableItems, setAvailableItems] = useState<DonationItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

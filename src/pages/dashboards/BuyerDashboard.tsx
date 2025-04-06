@@ -8,10 +8,21 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { ShoppingBag, Recycle, CircleDollarSign } from "lucide-react";
 
+interface SaleItem {
+  id: string;
+  title: string;
+  category: string;
+  price: number;
+  status: string;
+  condition?: string;
+  created_at: string;
+  updated_at: string;
+}
+
 const BuyerDashboard = () => {
   const { profile } = useAuth();
-  const [purchases, setPurchases] = useState<any[]>([]);
-  const [availableItems, setAvailableItems] = useState<any[]>([]);
+  const [purchases, setPurchases] = useState<SaleItem[]>([]);
+  const [availableItems, setAvailableItems] = useState<SaleItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

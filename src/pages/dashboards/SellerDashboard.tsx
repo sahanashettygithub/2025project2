@@ -8,9 +8,18 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { CircleDollarSign, TrendingUp, ShoppingCart } from "lucide-react";
 
+interface ListingItem {
+  id: string;
+  title: string;
+  category: string;
+  price: number;
+  status: string;
+  created_at: string;
+}
+
 const SellerDashboard = () => {
   const { profile } = useAuth();
-  const [listings, setListings] = useState<any[]>([]);
+  const [listings, setListings] = useState<ListingItem[]>([]);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
