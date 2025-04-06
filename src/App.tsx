@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 
 import Index from "./pages/Index";
@@ -24,26 +24,24 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/donate" element={<Donate />} />
-            <Route path="/sell" element={<Sell />} />
-            <Route path="/buy-clothes" element={<BuyClothes />} />
-            <Route path="/eco-store" element={<EcoStore />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/donor-dashboard" element={<DonorDashboard />} />
-            <Route path="/receiver-dashboard" element={<ReceiverDashboard />} />
-            <Route path="/seller-dashboard" element={<SellerDashboard />} />
-            <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
+      <AuthProvider>
+        <Toaster />
+        <Sonner />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/sell" element={<Sell />} />
+          <Route path="/buy-clothes" element={<BuyClothes />} />
+          <Route path="/eco-store" element={<EcoStore />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/donor-dashboard" element={<DonorDashboard />} />
+          <Route path="/receiver-dashboard" element={<ReceiverDashboard />} />
+          <Route path="/seller-dashboard" element={<SellerDashboard />} />
+          <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
