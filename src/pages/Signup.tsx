@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Leaf, Mail, Lock, User, Phone, Eye, EyeOff } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 // Parse URL query params
 const useQuery = () => {
@@ -20,6 +21,7 @@ const useQuery = () => {
 const Signup = () => {
   const query = useQuery();
   const roleParam = query.get("role") || "";
+  const { signUp, loading, user } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,8 +29,8 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(roleParam);
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
 
   // Set role from URL parameter
   useEffect(() => {
@@ -37,18 +39,22 @@ const Signup = () => {
     }
   }, [roleParam]);
 
-  const handleSignup = (e: React.FormEvent) => {
+  // Redirect if already logged in
+  if (user) {
+    return <Navigate to="/" />;
+  }
+
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!termsAccepted) return;
+    if (!termsAccepted || !role) return;
     
-    setIsLoading(true);
-    
-    // Simulate API call for signup
-    setTimeout(() => {
-      setIsLoading(false);
-      // In a real app, redirect to dashboard or home page after successful signup
-      window.location.href = "/";
-    }, 2000);
+    const userData = {
+      username,
+      full_name: name,
+      role
+    };
+
+    await signUp(email, password, userData);
   };
 
   return (
@@ -82,6 +88,21 @@ const Signup = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="John Doe" 
+                      className="pl-10"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="username">Username</Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input 
+                      id="username" 
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="johndoe123" 
                       className="pl-10"
                       required
                     />
@@ -217,9 +238,9 @@ const Signup = () => {
                 <Button 
                   type="submit" 
                   className="w-full bg-eco-primary hover:bg-eco-dark"
-                  disabled={isLoading || !termsAccepted}
+                  disabled={loading || !termsAccepted || !role}
                 >
-                  {isLoading ? "Creating account..." : "Create Account"}
+                  {loading ? "Creating account..." : "Create Account"}
                 </Button>
               </form>
 

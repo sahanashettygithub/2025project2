@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,24 +9,23 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Leaf, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const { signIn, loading, user } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    
-    // Simulate API call for login
-    setTimeout(() => {
-      setIsLoading(false);
-      // In a real app, redirect to dashboard or home page after successful login
-      window.location.href = "/";
-    }, 2000);
+    await signIn(email, password);
   };
+
+  // Redirect if already logged in
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -105,9 +104,9 @@ const Login = () => {
                     <Button 
                       type="submit" 
                       className="w-full bg-eco-primary hover:bg-eco-dark"
-                      disabled={isLoading}
+                      disabled={loading}
                     >
-                      {isLoading ? "Signing in..." : "Sign In"}
+                      {loading ? "Signing in..." : "Sign In"}
                     </Button>
                   </form>
                 </TabsContent>

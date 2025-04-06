@@ -9,7 +9,168 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      donated_items: {
+        Row: {
+          category: string
+          condition: string
+          created_at: string
+          description: string | null
+          donor_id: string
+          id: string
+          image_url: string | null
+          receiver_id: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          condition: string
+          created_at?: string
+          description?: string | null
+          donor_id: string
+          id?: string
+          image_url?: string | null
+          receiver_id?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          condition?: string
+          created_at?: string
+          description?: string | null
+          donor_id?: string
+          id?: string
+          image_url?: string | null
+          receiver_id?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      items_for_sale: {
+        Row: {
+          buyer_id: string | null
+          category: string
+          condition: string
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          price: number
+          seller_id: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          buyer_id?: string | null
+          category: string
+          condition: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          price: number
+          seller_id: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          buyer_id?: string | null
+          category?: string
+          condition?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          price?: number
+          seller_id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          points: number | null
+          role: string
+          updated_at: string
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+          points?: number | null
+          role: string
+          updated_at?: string
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          points?: number | null
+          role?: string
+          updated_at?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number | null
+          buyer_id: string | null
+          created_at: string
+          donor_id: string | null
+          id: string
+          item_id: string | null
+          points: number | null
+          receiver_id: string | null
+          seller_id: string | null
+          status: string
+          transaction_type: string
+        }
+        Insert: {
+          amount?: number | null
+          buyer_id?: string | null
+          created_at?: string
+          donor_id?: string | null
+          id?: string
+          item_id?: string | null
+          points?: number | null
+          receiver_id?: string | null
+          seller_id?: string | null
+          status?: string
+          transaction_type: string
+        }
+        Update: {
+          amount?: number | null
+          buyer_id?: string | null
+          created_at?: string
+          donor_id?: string | null
+          id?: string
+          item_id?: string | null
+          points?: number | null
+          receiver_id?: string | null
+          seller_id?: string | null
+          status?: string
+          transaction_type?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
