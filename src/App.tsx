@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Donate from "./pages/Donate";
 import Sell from "./pages/Sell";
 import EcoStore from "./pages/EcoStore";
+import BuyClothes from "./pages/BuyClothes";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/sell" element={<Sell />} />
+          <Route path="/buy-clothes" element={<BuyClothes />} />
           <Route path="/eco-store" element={<EcoStore />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

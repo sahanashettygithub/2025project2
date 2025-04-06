@@ -19,9 +19,9 @@ const CallToAction = () => {
               <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
-          <Link to="/how-it-works">
+          <Link to="/buy-clothes">
             <Button variant="outline" className="border-white text-white hover:bg-white/10 py-6 px-8 text-lg w-full sm:w-auto">
-              Learn More
+              Buy Recyclable Clothes
             </Button>
           </Link>
         </div>

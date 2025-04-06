@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Gift, ShoppingBag, Trash2, CircleDollarSign } from "lucide-react";
+import { Gift, ShoppingBag, Trash2, CircleDollarSign, Recycle } from "lucide-react";
 
 const UserRoleSelection = () => {
   const roles = [
@@ -24,14 +24,14 @@ const UserRoleSelection = () => {
       title: "Seller",
       description: "Sell your old clothes to recycling factories and earn eco points",
       icon: <CircleDollarSign className="h-12 w-12 text-eco-primary" />,
-      link: "/signup?role=seller",
+      link: "/sell",
       color: "bg-eco-light",
     },
     {
       title: "Buyer",
       description: "Purchase old clothes for recycling and sell recycled products through our eco store",
-      icon: <Trash2 className="h-12 w-12 text-eco-primary" />,
-      link: "/signup?role=buyer",
+      icon: <Recycle className="h-12 w-12 text-eco-primary" />,
+      link: "/buy-clothes",
       color: "bg-eco-light",
     },
   ];
@@ -43,7 +43,7 @@ const UserRoleSelection = () => {
           <h2 className="section-title">Join Our Community</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Choose your role in our circular economy platform. Whether you're donating,
-            receiving, selling, or buying recycled goods, we have a place for you.
+            receiving, selling, or buying recycled clothes, we have a place for you.
           </p>
         </div>
 
