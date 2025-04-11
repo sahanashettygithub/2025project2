@@ -34,7 +34,7 @@ const EcoStore = () => {
       discountPrice: 45.99,
       category: "Clothing",
       ecoPoints: 15,
-      image: "https://images.unsplash.com/photo-1552331704-0b9bfa8c8591?q=80&w=500",
+      image: "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?q=80&w=500",
       materials: "Recycled Denim"
     },
     {
