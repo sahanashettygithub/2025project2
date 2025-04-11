@@ -13,7 +13,7 @@ import { Search, Filter, ShoppingBag, Recycle } from "lucide-react";
 const EcoStore = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
   
-  // Sample recycled clothing products - in a real app this would come from an API
+  // Updated recycled clothing products with real images
   const products = [
     {
       id: 1,
@@ -23,7 +23,7 @@ const EcoStore = () => {
       discountPrice: 19.99,
       category: "Clothing",
       ecoPoints: 5,
-      image: "https://placehold.co/300x300/e2f0d9/1d4d25?text=Recycled+Tee",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500",
       materials: "100% Recycled Cotton"
     },
     {
@@ -34,7 +34,7 @@ const EcoStore = () => {
       discountPrice: 45.99,
       category: "Clothing",
       ecoPoints: 15,
-      image: "https://placehold.co/300x300/d9e6f2/254a77?text=Denim+Jacket",
+      image: "https://images.unsplash.com/photo-1552331704-0b9bfa8c8591?q=80&w=500",
       materials: "Recycled Denim"
     },
     {
@@ -45,7 +45,7 @@ const EcoStore = () => {
       discountPrice: 14.99,
       category: "Accessories",
       ecoPoints: 8,
-      image: "https://placehold.co/300x300/f2e2d9/774425?text=Eco+Scarf",
+      image: "https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?q=80&w=500",
       materials: "Mixed Recycled Fibers"
     },
     {
@@ -56,7 +56,7 @@ const EcoStore = () => {
       discountPrice: 39.99,
       category: "Accessories",
       ecoPoints: 12,
-      image: "https://placehold.co/300x300/e2d9f2/472577?text=Eco+Backpack",
+      image: "https://images.unsplash.com/photo-1623998021446-45cd9b714eae?q=80&w=500",
       materials: "Recycled Polyester from PET"
     },
     {
@@ -67,7 +67,7 @@ const EcoStore = () => {
       discountPrice: 22.99,
       category: "Accessories",
       ecoPoints: 10,
-      image: "https://placehold.co/300x300/f2f2d9/777725?text=Tote+Bag",
+      image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500",
       materials: "Recycled Mixed Fabrics"
     },
     {
@@ -78,7 +78,7 @@ const EcoStore = () => {
       discountPrice: 59.99,
       category: "Clothing",
       ecoPoints: 20,
-      image: "https://placehold.co/300x300/d9f2e2/257745?text=Wool+Sweater",
+      image: "https://images.unsplash.com/photo-1576566588028-4147f3842717?q=80&w=500",
       materials: "Recycled Wool"
     },
   ];
