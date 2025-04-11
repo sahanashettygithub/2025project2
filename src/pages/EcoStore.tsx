@@ -13,7 +13,7 @@ import { Search, Filter, ShoppingBag, Recycle } from "lucide-react";
 const EcoStore = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
   
-  // Updated recycled clothing products with real images
+  // Updated recycled clothing products with more clothing-focused images
   const products = [
     {
       id: 1,
@@ -45,7 +45,7 @@ const EcoStore = () => {
       discountPrice: 14.99,
       category: "Accessories",
       ecoPoints: 8,
-      image: "https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?q=80&w=500",
+      image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=500",
       materials: "Mixed Recycled Fibers"
     },
     {
@@ -56,7 +56,7 @@ const EcoStore = () => {
       discountPrice: 39.99,
       category: "Accessories",
       ecoPoints: 12,
-      image: "https://images.unsplash.com/photo-1623998021446-45cd9b714eae?q=80&w=500",
+      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=500",
       materials: "Recycled Polyester from PET"
     },
     {
@@ -78,7 +78,7 @@ const EcoStore = () => {
       discountPrice: 59.99,
       category: "Clothing",
       ecoPoints: 20,
-      image: "https://images.unsplash.com/photo-1576566588028-4147f3842717?q=80&w=500",
+      image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=500",
       materials: "Recycled Wool"
     },
   ];
