@@ -101,9 +101,9 @@ const EcoStore = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {/* Filters Sidebar */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="md:col-span-1 space-y-6">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center gap-2">
@@ -202,7 +202,7 @@ const EcoStore = () => {
             </div>
             
             {/* Products Grid */}
-            <div className="lg:col-span-3">
+            <div className="md:col-span-2 lg:col-span-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products.map((product) => (
                   <Card key={product.id} className="overflow-hidden flex flex-col h-full">
@@ -211,6 +211,7 @@ const EcoStore = () => {
                         src={product.image} 
                         alt={product.name} 
                         className="object-cover w-full h-full transition-transform hover:scale-105"
+                        loading="lazy"
                       />
                       {product.ecoPoints > 0 && (
                         <Badge className="absolute top-3 right-3 bg-eco-primary">
