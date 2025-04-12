@@ -56,18 +56,18 @@ const AccountConfirmation = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
-      <AnimatedElement variant="zoom-in" duration={0.7}>
+      <AnimatedElement>
         <Card className="w-full max-w-md shadow-lg">
           <CardHeader className="text-center pb-2">
-            <AnimatedElement variant="fade-down" delay={0.3} duration={0.8}>
-              <CheckCircle2 className="h-16 w-16 mx-auto text-green-500 mb-4 animate-bounce" />
+            <AnimatedElement>
+              <CheckCircle2 className="h-16 w-16 mx-auto text-green-500 mb-4" />
             </AnimatedElement>
-            <AnimatedElement variant="fade-up" delay={0.5}>
+            <AnimatedElement>
               <CardTitle className="text-2xl font-bold text-green-700">Account Confirmed!</CardTitle>
             </AnimatedElement>
           </CardHeader>
           <CardContent className="text-center pb-6">
-            <AnimatedElement variant="fade-up" delay={0.7}>
+            <AnimatedElement>
               <p className="text-gray-600 mb-4">
                 Your email has been verified and your account is now active.
               </p>
@@ -88,13 +88,13 @@ const AccountConfirmation = () => {
             </AnimatedElement>
           </CardContent>
           <CardFooter className="flex flex-col gap-3">
-            <AnimatedElement variant="fade-up" delay={0.9}>
+            <AnimatedElement>
               {user ? (
-                <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark transition-all hover:scale-105">
+                <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark">
                   <Link to={getDashboardUrl()}>Go to Dashboard</Link>
                 </Button>
               ) : (
-                <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark transition-all hover:scale-105">
+                <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark">
                   <Link to="/login">Login</Link>
                 </Button>
               )}

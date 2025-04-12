@@ -46,7 +46,7 @@ const ImpactCounter = () => {
   return (
     <section className="py-20 bg-muted overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedElement variant="fade-up">
+        <AnimatedElement>
           <div className="text-center mb-12">
             <h2 className="section-title">Our Impact</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -57,8 +57,8 @@ const ImpactCounter = () => {
         </AnimatedElement>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-          <AnimatedElement variant="fade-up" delay={0.2}>
-            <div className="eco-card transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+          <AnimatedElement>
+            <div className="eco-card">
               <div className="w-16 h-16 mx-auto rounded-full bg-eco-light flex items-center justify-center mb-4">
                 <Utensils className="h-8 w-8 text-eco-primary" />
               </div>
@@ -67,8 +67,8 @@ const ImpactCounter = () => {
             </div>
           </AnimatedElement>
           
-          <AnimatedElement variant="fade-up" delay={0.4}>
-            <div className="eco-card transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+          <AnimatedElement>
+            <div className="eco-card">
               <div className="w-16 h-16 mx-auto rounded-full bg-eco-light flex items-center justify-center mb-4">
                 <ShoppingBag className="h-8 w-8 text-eco-primary" />
               </div>
@@ -77,8 +77,8 @@ const ImpactCounter = () => {
             </div>
           </AnimatedElement>
           
-          <AnimatedElement variant="fade-up" delay={0.6}>
-            <div className="eco-card transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+          <AnimatedElement>
+            <div className="eco-card">
               <div className="w-16 h-16 mx-auto rounded-full bg-eco-light flex items-center justify-center mb-4">
                 <Leaf className="h-8 w-8 text-eco-primary" />
               </div>
