@@ -36,7 +36,10 @@ const App = () => (
           <Route path="/eco-store" element={<EcoStore />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          
+          {/* Make sure the route accepts query parameters */}
           <Route path="/account-confirmation" element={<AccountConfirmation />} />
+          
           <Route path="/donor-dashboard" element={<DonorDashboard />} />
           <Route path="/receiver-dashboard" element={<ReceiverDashboard />} />
           <Route path="/seller-dashboard" element={<SellerDashboard />} />

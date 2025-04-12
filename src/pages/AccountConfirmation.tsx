@@ -1,25 +1,39 @@
 
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 const AccountConfirmation = () => {
-  const { user, profile } = useAuth();
+  const { user, profile, session } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
-    // If no user after 5 seconds, redirect to login
+    // Check if this is an email confirmation redirect
+    const searchParams = new URLSearchParams(location.search);
+    const type = searchParams.get('type');
+    
+    if (type === 'email_confirmation') {
+      toast({
+        title: "Email verified successfully!",
+        description: "Your account is now active.",
+        variant: "default",
+      });
+    }
+    
+    // If no user after 7 seconds, redirect to login
     const timer = setTimeout(() => {
       if (!user) {
         navigate("/login");
       }
-    }, 5000);
+    }, 7000);
     
     return () => clearTimeout(timer);
-  }, [user, navigate]);
+  }, [user, navigate, location.search]);
 
   // Determine where to redirect based on role
   const getDashboardUrl = () => {
@@ -40,10 +54,10 @@ const AccountConfirmation = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center pb-2">
-          <CheckCircle2 className="h-16 w-16 mx-auto text-green-500 mb-2" />
+          <CheckCircle2 className="h-16 w-16 mx-auto text-green-500 mb-4" />
           <CardTitle className="text-2xl font-bold text-green-700">Account Confirmed!</CardTitle>
         </CardHeader>
         <CardContent className="text-center pb-6">
@@ -51,16 +65,21 @@ const AccountConfirmation = () => {
             Your email has been verified and your account is now active.
           </p>
           {user ? (
-            <p className="text-gray-600">
+            <p className="font-medium text-gray-700">
               Welcome to Waste2Worth, {profile?.full_name || user.email}!
             </p>
           ) : (
-            <p className="text-gray-600">
-              Redirecting you to login...
-            </p>
+            <div className="space-y-2">
+              <p className="text-gray-600">
+                Redirecting you to login...
+              </p>
+              <div className="flex items-center justify-center">
+                <div className="w-6 h-6 border-2 border-t-green-500 border-gray-200 rounded-full animate-spin"></div>
+              </div>
+            </div>
           )}
         </CardContent>
-        <CardFooter className="flex flex-col gap-2">
+        <CardFooter className="flex flex-col gap-3">
           {user ? (
             <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark">
               <Link to={getDashboardUrl()}>Go to Dashboard</Link>
