@@ -7,9 +7,8 @@ type AnimationVariant =
   | "fade-down"
   | "fade-left"
   | "fade-right"
-  | "zoom-in"
-  | "bounce"
-  | "pulse";
+  | "subtle-scale"
+  | "slight-bounce";
 
 type AnimatedElementProps = {
   children: ReactNode;
@@ -23,9 +22,30 @@ type AnimatedElementProps = {
 export const AnimatedElement = ({
   children,
   className = "",
+  variant = "fade-up",
+  delay = 0,
+  duration = 300
 }: AnimatedElementProps) => {
+  const animationClasses = {
+    "fade-up": "animate-fadeInUp",
+    "fade-down": "animate-fadeInDown",
+    "fade-left": "animate-fadeInLeft",
+    "fade-right": "animate-fadeInRight",
+    "subtle-scale": "animate-pulse-subtle",
+    "slight-bounce": "animate-float"
+  };
+
   return (
-    <div className={cn(className)}>
+    <div 
+      className={cn(
+        animationClasses[variant],
+        className
+      )}
+      style={{
+        animationDelay: `${delay}ms`,
+        animationDuration: `${duration}ms`
+      }}
+    >
       {children}
     </div>
   );
