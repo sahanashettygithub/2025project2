@@ -18,6 +18,7 @@ import DonorDashboard from "./pages/dashboards/DonorDashboard";
 import ReceiverDashboard from "./pages/dashboards/ReceiverDashboard";
 import SellerDashboard from "./pages/dashboards/SellerDashboard";
 import BuyerDashboard from "./pages/dashboards/BuyerDashboard";
+import AccountConfirmation from "./pages/AccountConfirmation";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/eco-store" element={<EcoStore />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/account-confirmation" element={<AccountConfirmation />} />
           <Route path="/donor-dashboard" element={<DonorDashboard />} />
           <Route path="/receiver-dashboard" element={<ReceiverDashboard />} />
           <Route path="/seller-dashboard" element={<SellerDashboard />} />

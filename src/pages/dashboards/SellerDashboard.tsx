@@ -64,7 +64,7 @@ const SellerDashboard = () => {
         
       if (updateError) throw updateError;
       
-      // 2. Calculate eco points to award (10 points per kg)
+      // 2. Calculate eco points to award (10 points per kg) - ONLY for sellers
       const ecoPointsEarned = Math.round(weight * ECO_POINTS_PER_KG);
       
       // 3. Update user's eco points

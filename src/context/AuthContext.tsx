@@ -34,12 +34,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setSession(session);
         setUser(session?.user ?? null);
         
-        if (session?.user) {
+        // Handle email confirmation events
+        if (event === 'SIGNED_IN' && session?.user) {
+          // Check if this is right after email verification
+          const url = new URL(window.location.href);
+          if (url.searchParams.get('type') === 'email_confirmation') {
+            navigate('/account-confirmation');
+          }
+          
           // Use setTimeout to avoid Supabase deadlock
           setTimeout(() => {
             fetchUserProfile(session.user.id);
           }, 0);
-        } else {
+        } else if (!session?.user) {
           setProfile(null);
         }
       }
@@ -57,7 +64,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [navigate]);
 
   const fetchUserProfile = async (userId: string) => {
     try {
@@ -85,7 +92,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         email,
         password,
         options: {
-          data: userData
+          data: userData,
+          emailRedirectTo: `${window.location.origin}/account-confirmation?type=email_confirmation`
         }
       });
 
@@ -100,14 +108,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       toast({
         title: "Account created successfully",
-        description: "Welcome to Waste2Worth!",
+        description: "Please check your email to verify your account.",
       });
 
-      // Redirect based on role
-      const role = userData?.['role'];
-      if (role) {
-        redirectBasedOnRole(role as string);
-      }
+      // Don't redirect yet - wait for email confirmation
     } catch (error: any) {
       toast({
         title: "Sign up failed",
