@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import { AnimatedElement } from "@/components/AnimatedElement";
 
 const AccountConfirmation = () => {
   const { user, profile, session } = useAuth();
@@ -55,45 +56,55 @@ const AccountConfirmation = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
-      <Card className="w-full max-w-md shadow-lg">
-        <CardHeader className="text-center pb-2">
-          <CheckCircle2 className="h-16 w-16 mx-auto text-green-500 mb-4" />
-          <CardTitle className="text-2xl font-bold text-green-700">Account Confirmed!</CardTitle>
-        </CardHeader>
-        <CardContent className="text-center pb-6">
-          <p className="text-gray-600 mb-4">
-            Your email has been verified and your account is now active.
-          </p>
-          {user ? (
-            <p className="font-medium text-gray-700">
-              Welcome to Waste2Worth, {profile?.full_name || user.email}!
-            </p>
-          ) : (
-            <div className="space-y-2">
-              <p className="text-gray-600">
-                Redirecting you to login...
+      <AnimatedElement variant="zoom-in" duration={0.7}>
+        <Card className="w-full max-w-md shadow-lg">
+          <CardHeader className="text-center pb-2">
+            <AnimatedElement variant="fade-down" delay={0.3} duration={0.8}>
+              <CheckCircle2 className="h-16 w-16 mx-auto text-green-500 mb-4 animate-bounce" />
+            </AnimatedElement>
+            <AnimatedElement variant="fade-up" delay={0.5}>
+              <CardTitle className="text-2xl font-bold text-green-700">Account Confirmed!</CardTitle>
+            </AnimatedElement>
+          </CardHeader>
+          <CardContent className="text-center pb-6">
+            <AnimatedElement variant="fade-up" delay={0.7}>
+              <p className="text-gray-600 mb-4">
+                Your email has been verified and your account is now active.
               </p>
-              <div className="flex items-center justify-center">
-                <div className="w-6 h-6 border-2 border-t-green-500 border-gray-200 rounded-full animate-spin"></div>
-              </div>
-            </div>
-          )}
-        </CardContent>
-        <CardFooter className="flex flex-col gap-3">
-          {user ? (
-            <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark">
-              <Link to={getDashboardUrl()}>Go to Dashboard</Link>
-            </Button>
-          ) : (
-            <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark">
-              <Link to="/login">Login</Link>
-            </Button>
-          )}
-          <Button asChild variant="outline" className="w-full">
-            <Link to="/">Return to Homepage</Link>
-          </Button>
-        </CardFooter>
-      </Card>
+              {user ? (
+                <p className="font-medium text-gray-700">
+                  Welcome to Waste2Worth, {profile?.full_name || user.email}!
+                </p>
+              ) : (
+                <div className="space-y-2">
+                  <p className="text-gray-600">
+                    Redirecting you to login...
+                  </p>
+                  <div className="flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-t-green-500 border-gray-200 rounded-full animate-spin"></div>
+                  </div>
+                </div>
+              )}
+            </AnimatedElement>
+          </CardContent>
+          <CardFooter className="flex flex-col gap-3">
+            <AnimatedElement variant="fade-up" delay={0.9}>
+              {user ? (
+                <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark transition-all hover:scale-105">
+                  <Link to={getDashboardUrl()}>Go to Dashboard</Link>
+                </Button>
+              ) : (
+                <Button asChild className="w-full bg-eco-primary hover:bg-eco-dark transition-all hover:scale-105">
+                  <Link to="/login">Login</Link>
+                </Button>
+              )}
+              <Button asChild variant="outline" className="w-full hover:bg-eco-light transition-colors">
+                <Link to="/">Return to Homepage</Link>
+              </Button>
+            </AnimatedElement>
+          </CardFooter>
+        </Card>
+      </AnimatedElement>
     </div>
   );
 };
